@@ -8,16 +8,27 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+`
 
-  h1 {
-    font-size: 54px;
-    color: ${props => props.theme.colors.primary};
-    margin-top: 40px;
+export const Login = styled.button`
+  width: 111px;
+  height: 33px;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+
+  :hover {
+    cursor: pointer;
+    animation: buttonAnimation 0.9s ease-in-out infinite;
   }
 
-  p {
-    margin-top: 24px;
-    font-size: 24px;
-    line-height: 32px;
+  @keyframes buttonAnimation {
+    50% {
+      transform: Scale(1.1);
+    }
+    100% {
+      transform: Scale(1);
+    }
   }
 `

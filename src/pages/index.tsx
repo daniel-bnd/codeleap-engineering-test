@@ -1,16 +1,23 @@
+import { NextPage } from 'next'
 import Head from 'next/head'
-import React from 'react'
-import { Container } from '../styles/pages/Home'
+import { useState } from 'react'
+import CodeLeap from '../assets/codeleap_logo_black 1.svg'
+import SignInModal from '../components/SignInModal'
+import { Container, Login } from '../styles/pages/Home'
 
-const Home: React.FC = () => {
+const Home: NextPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <Container>
       <Head>
-        <title>Homepage</title>
+        <title>CodeLeap</title>
       </Head>
 
-      <h1>ReactJS Structure</h1>
-      <p>Hello World!</p>
+      {isModalOpen && <SignInModal />}
+
+      <CodeLeap />
+      <Login onClick={() => setIsModalOpen(!isModalOpen)}>Sign In</Login>
     </Container>
   )
 }
