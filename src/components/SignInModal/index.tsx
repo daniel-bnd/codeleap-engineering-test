@@ -18,7 +18,7 @@ const SignInModal: NextPage = () => {
   function handleLogin(e) {
     e.preventDefault()
     if (username === 'user' || username === 'User') {
-      router.push('/admin')
+      router.push('/posts')
     } else {
       alert('Please fill the field with "User" to login')
     }
