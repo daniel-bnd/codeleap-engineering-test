@@ -16,16 +16,11 @@ const SignInModal: NextPage<SignInModalProps> = ({ OnClose = () => {} }) => {
   const [username, setUsername] = useState<string>()
   const dispatch = useAppDispatch()
 
-  function sleep(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms))
-  }
-
   async function handleLogin(e) {
     e.preventDefault()
     if (username === 'user' || username === 'User') {
       NProgress.start()
       dispatch(loginPending())
-      await sleep(2000)
       dispatch(setUser(username))
       dispatch(loginSuccess())
       NProgress.done()

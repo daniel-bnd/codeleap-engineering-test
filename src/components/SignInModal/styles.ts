@@ -39,12 +39,21 @@ export const Subtitle = styled.p`
 `
 
 export const Input = styled.input`
+  outline: none;
   width: 100%;
   height: 28px;
   border: 1px solid #777777;
   border-radius: 4px;
   padding-left: 11px;
   margin-top: 13px;
+  font: 400 16rem Roboto, sans-serif;
+
+  :focus:required:invalid {
+    border: 1px solid tomato;
+  }
+  :required:valid {
+    border: 1px solid #777777;
+  }
 
   ::placeholder {
     color: #cccccc;
