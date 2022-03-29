@@ -5,7 +5,7 @@ import { AppDispatch, AppThunk } from '../store'
 interface Props {
   id: number
   username: string
-  created_datetime: Date
+  created_datetime: string
   title: string
   content: string
 }
@@ -42,7 +42,7 @@ export default posts.reducer
 export function asyncAddPosts(): AppThunk {
   return async function (dispatch: AppDispatch) {
     await axios
-      .get('http://localhost:3000/api/getAllPosts')
+      .get('/api/getAllPosts')
       .then(res => {
         dispatch(addPosts(res.data))
       })

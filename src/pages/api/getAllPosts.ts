@@ -1,9 +1,9 @@
 import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    axios
+    await axios
       .get('http://dev.codeleap.co.uk/careers/?offset=70')
       .then(response => {
         res.status(200).json(response.data.results)
