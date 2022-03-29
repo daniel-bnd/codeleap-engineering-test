@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { NProgressStyled } from './nprogress'
 
 export default createGlobalStyle`
   * {
@@ -7,7 +8,13 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html {
+    font-size: 6.25%;
+  }
+
+  ${NProgressStyled}
+
   body {
-    font: 400 16px Roboto, sans-serif;
+    font: 400 16rem Roboto, sans-serif;
   }
 `

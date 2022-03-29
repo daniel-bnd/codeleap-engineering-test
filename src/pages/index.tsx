@@ -8,16 +8,20 @@ import { Container, Login } from '../styles/pages/Home'
 const Home: NextPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
+  function handleSignIn() {
+    setIsModalOpen(!isModalOpen)
+  }
+
   return (
     <Container>
       <Head>
         <title>CodeLeap</title>
       </Head>
 
-      {isModalOpen && <SignInModal />}
+      {isModalOpen && <SignInModal OnClose={() => setIsModalOpen(false)} />}
 
       <CodeLeap />
-      <Login onClick={() => setIsModalOpen(!isModalOpen)}>Sign In</Login>
+      <Login onClick={() => handleSignIn()}>Sign In</Login>
     </Container>
   )
 }

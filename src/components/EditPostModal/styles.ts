@@ -1,20 +1,28 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 723px;
-  height: 349px;
-  margin-bottom: 35px;
-  padding-left: 30px;
-  padding-top: 23px;
-  background: #ffffff;
-  border: 1px solid #999999;
-  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(119, 119, 119, 0.8);
 `
 
-export const Message = styled.p`
-  font-size: 22rem;
-  font-weight: 700;
-  margin-bottom: 15px;
+export const Title = styled.p`
+  font: 700 22rem Roboto, sans-serif;
+`
+
+export const Modal = styled.div`
+  width: 730px;
+  height: 350px;
+  padding: 23px 35px 30px 30px;
+  background: #ffffff;
+  box-sizing: border-box;
 `
 
 export const Label = styled.label`
@@ -27,14 +35,14 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   outline: none;
-  width: 659px;
+  width: 100%;
   height: 30px;
   background: #ffffff;
   border: 1px solid #777777;
   box-sizing: border-box;
   border-radius: 4px;
   padding-left: 10px;
-  font: 400 16rem Roboto, sans-serif;
+  font: 400 16px Roboto, sans-serif;
   ::placeholder {
     color: #cccccc;
   }
@@ -51,7 +59,7 @@ export const TextArea = styled.textarea`
   outline: none;
   resize: none;
   white-space: pre-line;
-  width: 659px;
+  width: 100%;
   height: 74px;
   background: #ffffff;
   border: 1px solid #777777;
@@ -72,17 +80,12 @@ export const TextArea = styled.textarea`
   }
 `
 
-interface ButtonProps {
-  disabled: boolean
-}
-
-export const Button = styled.button<ButtonProps>`
+export const Button = styled.button`
   border: none;
   float: right;
   width: 111px;
   height: 33px;
-  margin-top: 30px;
-  margin-right: 34px;
+  margin-top: 35px;
   background: #000000;
   color: #fff;
   font: 700 16rem Roboto, sans-serif;
@@ -91,16 +94,6 @@ export const Button = styled.button<ButtonProps>`
     cursor: pointer;
     animation: buttonAnimation 0.7s ease-in-out infinite;
   }
-
-  ${props =>
-    props.disabled &&
-    css`
-      background: grey;
-      :hover {
-        cursor: default;
-        animation: none;
-      }
-    `}
 
   @keyframes buttonAnimation {
     50% {

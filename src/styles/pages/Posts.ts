@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import SignOutSVG from '../../assets/SignOut.svg'
 
 export const Container = styled.div`
   width: 100%;
@@ -14,10 +15,35 @@ export const ContainerBox = styled.div`
 
 export const Title = styled.div`
   height: 80px;
+  padding: 0 37px;
   background: #000;
-  color: #fff;
-  padding-left: 37px;
-  padding-top: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    color: #fff;
+    font: 700 22rem Roboto, sans-serif;
+  }
+`
+
+export const SignOutBox = styled.div`
+  display: flex;
+  align-items: center;
+
+  span {
+    color: #fff;
+    font: 500 18rem Roboto, sans-serif;
+  }
+
+  :hover {
+    cursor: pointer;
+    filter: brightness(0.5);
+  }
+`
+
+export const SignOut = styled(SignOutSVG)`
+  margin-left: 5px;
 `
 
 export const PostsBox = styled.div`

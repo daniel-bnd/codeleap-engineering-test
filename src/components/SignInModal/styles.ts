@@ -16,16 +16,21 @@ export const Container = styled.div`
 export const Modal = styled.div`
   width: 500px;
   height: 220px;
-  padding-left: 32px;
-  padding-top: 28px;
+  padding: 28px 25px 23px 30px;
   background: #ffffff;
   border: 1px solid #cccccc;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    width: 100vw;
+    height: 29.5vh;
+    padding-left: 15px;
+  }
 `
 
 export const Title = styled.h2`
   font-weight: 700;
-  font-size: 22px;
+  font-size: 22rem;
   line-height: 26px;
 `
 
@@ -34,7 +39,7 @@ export const Subtitle = styled.p`
 `
 
 export const Input = styled.input`
-  width: 444px;
+  width: 100%;
   height: 28px;
   border: 1px solid #777777;
   border-radius: 4px;
@@ -55,7 +60,6 @@ export const EnterButton = styled.button`
   font-weight: 700;
   float: right;
   margin-top: 20px;
-  margin-right: 25px;
 
   :hover {
     cursor: pointer;

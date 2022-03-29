@@ -1,25 +1,52 @@
 import { NextPage } from 'next'
-import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { useLayoutEffect } from 'react'
 import CreatePost from '../components/CreatePost'
+import DeletePostModal from '../components/DeletePostModal'
+import EditPostModal from '../components/EditPostModal'
+import PostsList from '../components/PostsList'
 import { useAppDispatch, useAppSelector } from '../redux/hooks'
-import { asyncAddPosts } from '../redux/postsSlice'
+import { signOut } from '../redux/loginSlice'
 import { RootState } from '../redux/store'
-import { Container, ContainerBox, PostsBox, Title } from '../styles/pages/Posts'
+import {
+  Container,
+  ContainerBox,
+  PostsBox,
+  SignOut,
+  SignOutBox,
+  Title
+} from '../styles/pages/Posts'
 
 const Posts: NextPage = () => {
+  const router = useRouter()
   const dispatch = useAppDispatch()
-  const posts = useAppSelector((state: RootState) => state.posts)
+  const login = useAppSelector((state: RootState) => state.login.isAuth)
+  const deleteModal = useAppSelector(
+    (state: RootState) => state.deleteModal.isOpen
+  )
+  const editModal = useAppSelector((state: RootState) => state.editModal.isOpen)
 
-  useEffect(() => {
-    dispatch(asyncAddPosts())
-  }, [])
+  useLayoutEffect(() => {
+    if (!login) {
+      router.push('/')
+    }
+  }, [login])
 
   return (
     <Container>
+      {deleteModal && <DeletePostModal />}
+      {editModal && <EditPostModal />}
       <ContainerBox>
-        <Title>CodeLeap Network</Title>
+        <Title>
+          <span>CodeLeap Network</span>
+          <SignOutBox onClick={() => dispatch(signOut())}>
+            <span>Sign Out</span>
+            <SignOut />
+          </SignOutBox>
+        </Title>
         <PostsBox>
           <CreatePost />
+          <PostsList />
         </PostsBox>
       </ContainerBox>
     </Container>

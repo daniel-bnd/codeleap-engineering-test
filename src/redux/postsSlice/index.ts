@@ -17,15 +17,26 @@ const posts = createSlice({
   initialState,
   reducers: {
     addPost(state, { payload }) {
-      return [...state, payload]
+      return [payload, ...state]
     },
     addPosts(state, { payload }) {
       return [...payload]
+    },
+    deletePost(state, { payload }) {
+      return [...state.filter(post => post.id !== payload)]
+    },
+    editPost(state, { payload }) {
+      state.map(post => {
+        if (post.id === payload.id) {
+          post.title = payload.title
+          post.content = payload.content
+        }
+      })
     }
   }
 })
 
-export const { addPost, addPosts } = posts.actions
+export const { addPost, addPosts, deletePost, editPost } = posts.actions
 export default posts.reducer
 
 export function asyncAddPosts(): AppThunk {

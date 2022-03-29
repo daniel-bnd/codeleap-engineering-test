@@ -6,24 +6,25 @@ import { RootState } from '../../redux/store'
 import { Button, Container, Input, Label, Message, TextArea } from './styles'
 
 const CreatePost: NextPage = () => {
+  const dispatch = useAppDispatch()
+  const user = useAppSelector((state: RootState) => state.user.username)
+
+  const id = Math.floor(Math.random() * 2000) + 2000
+  const created_datetime = new Date().toISOString()
   const [title, setTitle] = useState<string>('')
   const [content, setContent] = useState<string>('')
-  const id = Math.floor(Math.random() * 2000) + 2000
 
-  const newPost = {
+  const newUser = {
     id,
-    username: 'User',
-    created_datetime: new Date().toISOString(),
+    username: user,
+    created_datetime,
     title,
     content
   }
 
-  const dispatch = useAppDispatch()
-  const posts = useAppSelector((state: RootState) => state.posts)
-
   function handleCreatePost(e) {
     e.preventDefault()
-    dispatch(addPost(newPost))
+    dispatch(addPost(newUser))
     setTitle('')
     setContent('')
   }
