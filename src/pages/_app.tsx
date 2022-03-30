@@ -1,4 +1,3 @@
-import { SessionProvider } from 'next-auth/react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import Router from 'next/router'
@@ -29,20 +28,18 @@ const MyApp: React.FC<AppProps> = ({
   pageProps: { session, ...pageProps }
 }) => {
   return (
-    <SessionProvider session={session}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Head>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1.0"
-            />
-          </Head>
-          <Component {...pageProps} />
-          <GlobalStyle />
-        </PersistGate>
-      </Provider>
-    </SessionProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+        </Head>
+        <Component {...pageProps} />
+        <GlobalStyle />
+      </PersistGate>
+    </Provider>
   )
 }
 
